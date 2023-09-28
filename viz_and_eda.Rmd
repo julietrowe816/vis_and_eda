@@ -1,6 +1,0 @@
----
-title: "Viz part 1"
-author: "Juliet Rowe"
-date: "2023-09-28"
-output: github_document
----
