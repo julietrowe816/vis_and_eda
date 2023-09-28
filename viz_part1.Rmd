@@ -28,3 +28,39 @@ weather_df =
   select(name, id, everything())
 ```
 
+
+Let's make a plot!
+
+```{r}
+ggp_nyc_weather =
+  weather_df |>
+  filter(name=="CentralPark_NY") |>
+  ggplot(weather_df, aes(x=tmin, y=tmax))+geom_point()
+```
+
+
+# Fancy plot
+
+```{r}
+ggplot(weather_df, aes(x=tmin, y=tmax, color=name)) +
+  geom_point(aes(color=name), alpha = 0.3) +
+  geom_smooth(se = FALSE)
+  
+```
+
+Plot with facets
+
+```{r}
+ggplot(weather_df, aes(x=tmin, y=tmax, color=name)) +
+  geom_point(alpha=0.3)+
+  geom_smooth() +
+  facet_grid(. ~ name)
+```
+
+let's try a different plot. temps are boring
+
+```{r}
+ggplot(weather_df, aes(x=date, y=tmax, color=name))+
+  geom_point()
+```
+
