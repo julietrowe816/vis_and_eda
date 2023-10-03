@@ -71,10 +71,48 @@ weather_df |>
   ggplot(aes(x=tmin, y=tmax, color=name)) +
   geom_point(alpha=0.5) +
   labs(
-    x = "Min daily temp (degrees C)"
+    title = "Temperature plot",
+    x = "Min daily temp (degrees C)",
+    y = "Max daily temp",
+    color = "Location",
+    caption = "Max vs min daily temp in three locations, data from rnoaa"
+  ) +
+  scale_x_continuous(
+    breaks = c(-15, 0, 15),
+    labels = c("-15 C", "0", "15")
+  ) +
+  scale_y_continuous(
+    position = "right",
+    trans = "sqrt"
   )
+```
+
+    ## Warning in self$trans$transform(x): NaNs produced
+
+    ## Warning: Transformation introduced infinite values in continuous y-axis
+
+    ## Warning: Removed 142 rows containing missing values (`geom_point()`).
+
+<img src="viz_part2_files/figure-gfm/unnamed-chunk-3-1.png" width="90%" />
+
+what about colors…
+
+``` r
+weather_df |>
+  ggplot(aes(x=tmin, y=tmax, color=name)) +
+  geom_point(alpha=0.5) +
+  labs(
+    title = "Temperature plot",
+    x = "Min daily temp (degrees C)",
+    y = "Max daily temp",
+    color = "Location",
+    caption = "Max vs min daily temp in three locations, data from rnoaa"
+  ) + 
+  viridis::scale_color_viridis(discrete=TRUE)
 ```
 
     ## Warning: Removed 17 rows containing missing values (`geom_point()`).
 
-<img src="viz_part2_files/figure-gfm/unnamed-chunk-3-1.png" width="90%" />
+<img src="viz_part2_files/figure-gfm/unnamed-chunk-4-1.png" width="90%" />
+
+## Themes
